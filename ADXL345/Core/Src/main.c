@@ -164,6 +164,7 @@ int main(void)
 
 	int16_t x, y, z;
 	char adxl_axis[64];
+  char* msg;
 
   /* USER CODE BEGIN 1 */
 
@@ -191,7 +192,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  char* msg;
+
 
   while(1)
   {
@@ -204,7 +205,7 @@ int main(void)
 
 				 if (HAL_I2C_IsDeviceReady(&hi2c1, ADXL345_ADDR, 3, 100) != HAL_OK)
 				 {
-				        char* msg = "ADXL345 disconnected!\r\n";
+				        msg = "ADXL345 disconnected!\r\n";
 				        HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
 				        break;
 				 }
